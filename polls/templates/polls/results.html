@@ -1,0 +1,10 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<h1>{{ poll.question }}</h1>
+
+<ul>
+{% for choice in poll.choise_set.all %}
+    <li>{{choice.choice_text}} -- {{choice.votes}} vote {{choice.votes|pluralize }}</li>
+{% endfor %}
+</ul>
+
+<a href="{% url 'polls:polls-detail' poll.id %}">Vote again?</a>

@@ -1,0 +1,15 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+{% if latest_poll_list %}
+    <ul>
+    {% for poll in latest_poll_list%}
+    <!-- 
+        <li><a href="/polls/{{ poll.id }}/">{{ poll.question }}</a></li>
+     -->
+        <!-- 这种方式是通过使用urls.py文件中定义的url的name值来定义url，这么做避免硬编码，当修改url文件时就不需要
+        修改html文件了 -->
+        <li><a href="{% url 'polls:polls-detail' poll.id%}">{{ poll.question }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
